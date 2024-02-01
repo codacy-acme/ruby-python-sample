@@ -1,0 +1,61 @@
+
+name: Client Side Tools and Coverage
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11  # Choose your Python version
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install project dependencies
+        run: bundle install
+
+      - name: Run tests with coverage
+        run: bundle exec rspec --require ./spec/spec_helper.rb
+      - name: Install dependencies
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -y -qq install openjdk-8-jdk openjdk-8-jre
+          pip3 install coverage
+          pip3 install pytest
+
+      - name: Run tests and collect coverage
+        run: |
+          # Replace with the actual paths to your test files and source files
+          coverage run -m pytest /$GITHUB_WORKSPACE/*.py
+          coverage run -m unittest /$GITHUB_WORKSPACE/*.py
+          coverage report -m --fail-under=10  # You can set your desired coverage threshold here
+        continue-on-error: true
+
+      - name: Generate coverage XML report
+        run: |
+          # Replace with the actual paths to your test files and source files
+          coverage xml -o $GITHUB_WORKSPACE/coverage.xml
+
+
+      - name: Upload Ruby coverage report to Codacy
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_API_TOKEN }}
