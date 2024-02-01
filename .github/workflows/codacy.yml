@@ -43,18 +43,12 @@ jobs:
 
       - name: Run tests and collect coverage
         run: |
-          # Replace with the actual paths to your test files and source files
-          coverage run -m pytest /$GITHUB_WORKSPACE/*.py
-          coverage run -m unittest /$GITHUB_WORKSPACE/*.py
-          coverage report -m --fail-under=10  # You can set your desired coverage threshold here
+          python3 -m unittest
+          python3 -m coverage xml
+
         continue-on-error: true
 
-      - name: Generate coverage XML report
-        run: |
-          # Replace with the actual paths to your test files and source files
-          coverage xml -o $GITHUB_WORKSPACE/coverage.xml
-
-
+      
       - name: Upload Ruby coverage report to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
