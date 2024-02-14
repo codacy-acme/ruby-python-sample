@@ -1,9 +1,11 @@
 AllCops:
+  TargetRubyVersion: 3.1.2
   Exclude:
     - db/schema.rb
 
 require:
   - rubocop-rails
+  - rubocop-rspec
   - rubocop-performance
 
 Naming/AccessorMethodName:
@@ -97,8 +99,10 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   CountComments: true  # count full line comments?
   Max: 25
+  ExcludedMethods: []
   Exclude:
     - "spec/**/*"
+    - config/routes.rb
 
 Metrics/CyclomaticComplexity:
   Description: >-
@@ -448,7 +452,7 @@ Layout/InitialIndentation:
     Checks the indentation of the first non-blank non-comment line in a file.
   Enabled: false
 
-Layout/LineLength:
+Metrics/LineLength:
   Description: 'Limit lines to 80 characters.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
   Max: 80
