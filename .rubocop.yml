@@ -1,6 +1,11 @@
 AllCops:
   Enabled: false
 
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
 Lint/AmbiguousOperator:
   Enabled: true
 
