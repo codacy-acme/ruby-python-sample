@@ -1,140 +1,196 @@
-require:
-  - rubocop-factory_bot
-  - rubocop-performance
-  - rubocop-rails
-  - rubocop-rspec
-  - rubocop-capybara
-
 AllCops:
-  TargetRubyVersion: 3.3.0
-  NewCops: enable
-
-Rails/UnknownEnv:
-  Environments:
-    - production
-    - development
-    - test
-    - staging
-
-### FactoryBot ###
-FactoryBot/SyntaxMethods:
   Enabled: false
 
-### Layout ###
-Layout/AccessModifierIndentation:
-  Description: >-
-    Bare access modifiers (those not applying to specific methods) should be indented
-    as deep as method definitions, or as deep as the class/module keyword, depending on configuration.
-  StyleGuide: "https://github.com/rubocop/ruby-style-guide#access-modifiers-indentation"
-  Enabled: false
-
-Layout/EmptyLineAfterMagicComment:
-  Enabled: false
-
-Layout/EmptyLinesAroundClassBody:
-  Description: "This cop checks if empty lines around the bodies of classes match the configuration."
-  StyleGuide: "https://github.com/rubocop/ruby-style-guide#empty-lines-around-bodies"
-  Enabled: false
-
-Layout/EmptyLinesAroundModuleBody:
-  Description: "This cop checks if empty lines around the bodies of modules match the configuration."
-  StyleGuide: "https://github.com/rubocop/ruby-style-guide#empty-lines-around-bodies"
-  Enabled: false
-
-Layout/LineLength:
-  Description: "Limit lines to 120 characters."
-  StyleGuide: "https://github.com/rubocop/ruby-style-guide#max-line-length"
-  Max: 120
-
-### Style ###
-Style/DocumentationMethod:
-  Enabled: true
-  Exclude:
-    - "**/db/migrate/**/*"
-    - "**/app/serializers/**/*"
-
-Style/NumericPredicate:
-  Enabled: false
-
-### Metrics ###
-Metrics/BlockLength:
-  Description: >-
-    This cop checks if the length of a block exceeds some maximum value.
-    Comment lines can optionally be ignored.
-    The maximum allowed length is configurable.
-    The cop can be configured to ignore blocks passed to certain methods.
-    
-    You can set literals you want to fold with `CountAsOne`.
-    Available are: 'array', 'hash', and 'heredoc'.
-    Each literal will be counted as one line regardless of its actual size.
-  Enabled: false
-
-Metrics/PerceivedComplexity:
-  Description: >-
-    This cop tries to produce a complexity score that's a measure of the complexity
-    the reader experiences when looking at a method.
-    For that reason it considers `when` nodes as something that
-    doesn't add as much complexity as an `if` or a `&&`.
-    Except if it's one of those special `case`/`when` constructs where there's no expression after `case`.
-    Then the cop treats it as an `if`/`elsif`/`elsif`… and lets all the `when` nodes count.
-    In contrast to the CyclomaticComplexity cop, this cop considers `else` nodes as adding complexity.
-  Enabled: false
-
-### Performance ###
-Performance/FlatMap:
-  Description: >-
-    Use `Enumerable#flat_map` instead of `Enumerable#map...Array#flatten(1)`
-    or `Enumberable#collect..Array#flatten(1)`
-  Reference: "https://github.com/JuanitoFatas/fast-ruby#enumerablemaparrayflatten-vs-enumerableflat_map-code"
+Lint_AmbiguousOperator:
   Enabled: true
 
-### Rails ###
-Rails/SkipsModelValidations:
-  Exclude:
-    - "**/spec/**/*"
-
-### RSpec ###
-RSpec/ExampleLength:
-  Description: >-
-    Checks for long examples.
-    A long example is usually more difficult to understand.
-    Consider extracting out some behaviour, e.g. with a `let` block, or a helper method.
-  Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
-  Description: >-
-    Checks if example groups contain too many `let` and `subject` calls.
-    This cop is configurable using the `Max` option and the `AllowSubject`
-    which will configure the cop to only register offenses on calls to `let` and not calls to `subject`.
-  Enabled: false
-
-# We need to have multiple expectations to have faster tests
-RSpec/MultipleExpectations:
-  Description: "Checks if examples contain too many `expect` calls."
-  Enabled: false
-
-RSpec/NestedGroups:
-  Description: "Checks for nested example groups."
-  Enabled: false
-
-### Style ###
-Style/ClassAndModuleChildren:
-  Description: "Checks style of children classes and modules."
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Description: >-
-    Add the frozen_string_literal comment to the top of files
-    to help transition from Ruby 2.3.0 to Ruby 3.0.
+Lint_AmbiguousRegexpLiteral:
   Enabled: true
 
-Naming/VariableNumber:
-  Enabled: false
+Lint_Debugger:
+  Enabled: true
+  DebuggerMethods: {"Kernel"=>["binding.irb", "Kernel.binding.irb"], "Byebug"=>["byebug", "remote_byebug", "Kernel.byebug", "Kernel.remote_byebug"], "Capybara"=>["save_and_open_page", "save_and_open_screenshot"], "debug.rb"=>["binding.b", "binding.break", "Kernel.binding.b", "Kernel.binding.break"], "Pry"=>["binding.pry", "binding.remote_pry", "binding.pry_remote", "Kernel.binding.pry", "Kernel.binding.remote_pry", "Kernel.binding.pry_remote", "Pry.rescue", "pry"], "Rails"=>["debugger", "Kernel.debugger"], "RubyJard"=>["jard"], "WebConsole"=>["binding.console"]}
 
-# Supports --auto-correct
-Rails/RedundantPresenceValidationOnBelongsTo:
-  Description: Checks for redundant presence validation on belongs_to association.
-  Enabled: false
+Lint_DuplicateMethods:
+  Enabled: true
+
+Lint_EachWithObjectArgument:
+  Enabled: true
+
+Lint_ElseLayout:
+  Enabled: true
+
+Lint_EmptyEnsure:
+  Enabled: true
+
+Lint_EmptyInterpolation:
+  Enabled: true
+
+Lint_EnsureReturn:
+  Enabled: true
+
+Lint_LiteralInInterpolation:
+  Enabled: true
+
+Lint_Loop:
+  Enabled: true
+  Safe: false
+
+Lint_NestedMethodDefinition:
+  Enabled: true
+  AllowedMethods: []
+  AllowedPatterns: []
+
+Lint_RescueException:
+  Enabled: true
+
+Lint_ShadowingOuterLocalVariable:
+  Enabled: true
+
+Lint_UnreachableCode:
+  Enabled: true
+
+Lint_UnusedBlockArgument:
+  Enabled: true
+  IgnoreEmptyBlocks: true
+  AllowUnusedKeywordArguments: false
+
+Lint_UnusedMethodArgument:
+  Enabled: true
+  AllowUnusedKeywordArguments: false
+  IgnoreEmptyMethods: true
+  IgnoreNotImplementedMethods: true
+
+Lint_UselessAccessModifier:
+  Enabled: true
+  ContextCreatingMethods: []
+  MethodCreatingMethods: []
+
+Lint_UselessAssignment:
+  Enabled: true
   SafeAutoCorrect: false
-  VersionAdded: '2.13'
 
+Lint_UselessElseWithoutRescue:
+  Enabled: true
+
+Lint_UselessSetterCall:
+  Enabled: true
+  Safe: false
+
+Metrics_CyclomaticComplexity:
+  Enabled: true
+  AllowedMethods: []
+  AllowedPatterns: []
+  Max: 7
+
+Performance_Count:
+  Enabled: true
+  SafeAutoCorrect: false
+
+Performance_Detect:
+  Enabled: true
+  SafeAutoCorrect: false
+
+Performance_ReverseEach:
+  Enabled: true
+
+Performance_Size:
+  Enabled: true
+
+Rails_Date:
+  Enabled: true
+  SafeAutoCorrect: false
+  EnforcedStyle: flexible
+  SupportedStyles: ["strict","flexible"]
+  AllowToTime: true
+
+Style_Alias:
+  Enabled: true
+  EnforcedStyle: prefer_alias
+  SupportedStyles: ["prefer_alias","prefer_alias_method"]
+
+Style_ArrayJoin:
+  Enabled: true
+
+Style_AutoResourceCleanup:
+  Enabled: true
+
+Style_CaseEquality:
+  Enabled: true
+  AllowOnConstant: false
+  AllowOnSelfClass: false
+
+Style_ClassVars:
+  Enabled: true
+
+Style_ColonMethodCall:
+  Enabled: true
+
+Style_DoubleNegation:
+  Enabled: true
+  EnforcedStyle: allowed_in_returns
+  SafeAutoCorrect: false
+  SupportedStyles: ["allowed_in_returns","forbidden"]
+
+Style_EachWithObject:
+  Enabled: true
+
+Style_EmptyElse:
+  Enabled: true
+  EnforcedStyle: both
+  SupportedStyles: ["empty","nil","both"]
+  AllowComments: false
+
+Style_EvenOdd:
+  Enabled: true
+
+Style_InfiniteLoop:
+  Enabled: true
+  Safe: false
+
+Style_Lambda:
+  Enabled: true
+  EnforcedStyle: line_count_dependent
+  SupportedStyles: ["line_count_dependent","lambda","literal"]
+
+Style_LambdaCall:
+  Enabled: true
+  EnforcedStyle: call
+  SupportedStyles: ["call","braces"]
+
+Style_ModuleFunction:
+  Enabled: true
+  EnforcedStyle: module_function
+  SupportedStyles: ["module_function","extend_self","forbidden"]
+  Autocorrect: false
+  SafeAutoCorrect: false
+
+Style_MultilineIfThen:
+  Enabled: true
+
+Style_MultilineTernaryOperator:
+  Enabled: true
+
+Style_NegatedIf:
+  Enabled: true
+  EnforcedStyle: both
+  SupportedStyles: ["both","prefix","postfix"]
+
+Style_NegatedWhile:
+  Enabled: true
+
+Style_NestedTernaryOperator:
+  Enabled: true
+
+Style_NilComparison:
+  Enabled: true
+  EnforcedStyle: predicate
+  SupportedStyles: ["predicate","comparison"]
+
+Style_NonNilCheck:
+  Enabled: true
+  IncludeSemanticChanges: false
+
+Style_OneLineConditional:
+  Enabled: true
+  AlwaysCorrectToMultiline: false
