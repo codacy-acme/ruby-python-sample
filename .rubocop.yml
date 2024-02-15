@@ -1,192 +1,192 @@
 AllCops:
   Enabled: false
 
-Lint_AmbiguousOperator:
+Lint/AmbiguousOperator:
   Enabled: true
 
-Lint_AmbiguousRegexpLiteral:
+Lint/AmbiguousRegexpLiteral:
   Enabled: true
 
-Lint_DuplicateMethods:
+Lint/DuplicateMethods:
   Enabled: true
 
-Lint_EachWithObjectArgument:
+Lint/EachWithObjectArgument:
   Enabled: true
 
-Lint_ElseLayout:
+Lint/ElseLayout:
   Enabled: true
 
-Lint_EmptyEnsure:
+Lint/EmptyEnsure:
   Enabled: true
 
-Lint_EmptyInterpolation:
+Lint/EmptyInterpolation:
   Enabled: true
 
-Lint_EnsureReturn:
+Lint/EnsureReturn:
   Enabled: true
 
-Lint_LiteralInInterpolation:
+Lint/LiteralInInterpolation:
   Enabled: true
 
-Lint_Loop:
+Lint/Loop:
   Enabled: true
   Safe: false
 
-Lint_NestedMethodDefinition:
+Lint/NestedMethodDefinition:
   Enabled: true
   AllowedMethods: []
   AllowedPatterns: []
 
-Lint_RescueException:
+Lint/RescueException:
   Enabled: true
 
-Lint_ShadowingOuterLocalVariable:
+Lint/ShadowingOuterLocalVariable:
   Enabled: true
 
-Lint_UnreachableCode:
+Lint/UnreachableCode:
   Enabled: true
 
-Lint_UnusedBlockArgument:
+Lint/UnusedBlockArgument:
   Enabled: true
   IgnoreEmptyBlocks: true
   AllowUnusedKeywordArguments: false
 
-Lint_UnusedMethodArgument:
+Lint/UnusedMethodArgument:
   Enabled: true
   AllowUnusedKeywordArguments: false
   IgnoreEmptyMethods: true
   IgnoreNotImplementedMethods: true
 
-Lint_UselessAccessModifier:
+Lint/UselessAccessModifier:
   Enabled: true
   ContextCreatingMethods: []
   MethodCreatingMethods: []
 
-Lint_UselessAssignment:
+Lint/UselessAssignment:
   Enabled: true
   SafeAutoCorrect: false
 
-Lint_UselessElseWithoutRescue:
+Lint/UselessElseWithoutRescue:
   Enabled: true
 
-Lint_UselessSetterCall:
+Lint/UselessSetterCall:
   Enabled: true
   Safe: false
 
-Metrics_CyclomaticComplexity:
+Metrics/CyclomaticComplexity:
   Enabled: true
   AllowedMethods: []
   AllowedPatterns: []
   Max: 7
 
-Performance_Count:
+Performance/Count:
   Enabled: true
   SafeAutoCorrect: false
 
-Performance_Detect:
+Performance/Detect:
   Enabled: true
   SafeAutoCorrect: false
 
-Performance_ReverseEach:
+Performance/ReverseEach:
   Enabled: true
 
-Performance_Size:
+Performance/Size:
   Enabled: true
 
-Rails_Date:
+Rails/Date:
   Enabled: true
   SafeAutoCorrect: false
   EnforcedStyle: flexible
   SupportedStyles: ["strict","flexible"]
   AllowToTime: true
 
-Style_Alias:
+Style/Alias:
   Enabled: true
   EnforcedStyle: prefer_alias
   SupportedStyles: ["prefer_alias","prefer_alias_method"]
 
-Style_ArrayJoin:
+Style/ArrayJoin:
   Enabled: true
 
-Style_AutoResourceCleanup:
+Style/AutoResourceCleanup:
   Enabled: true
 
-Style_CaseEquality:
+Style/CaseEquality:
   Enabled: true
   AllowOnConstant: false
   AllowOnSelfClass: false
 
-Style_ClassVars:
+Style/ClassVars:
   Enabled: true
 
-Style_ColonMethodCall:
+Style/ColonMethodCall:
   Enabled: true
 
-Style_DoubleNegation:
+Style/DoubleNegation:
   Enabled: true
   EnforcedStyle: allowed_in_returns
   SafeAutoCorrect: false
   SupportedStyles: ["allowed_in_returns","forbidden"]
 
-Style_EachWithObject:
+Style/EachWithObject:
   Enabled: true
 
-Style_EmptyElse:
+Style/EmptyElse:
   Enabled: true
   EnforcedStyle: both
   SupportedStyles: ["empty","nil","both"]
   AllowComments: false
 
-Style_EvenOdd:
+Style/EvenOdd:
   Enabled: true
 
-Style_InfiniteLoop:
+Style/InfiniteLoop:
   Enabled: true
   Safe: false
 
-Style_Lambda:
+Style/Lambda:
   Enabled: true
   EnforcedStyle: line_count_dependent
   SupportedStyles: ["line_count_dependent","lambda","literal"]
 
-Style_LambdaCall:
+Style/LambdaCall:
   Enabled: true
   EnforcedStyle: call
   SupportedStyles: ["call","braces"]
 
-Style_ModuleFunction:
+Style/ModuleFunction:
   Enabled: true
   EnforcedStyle: module_function
   SupportedStyles: ["module_function","extend_self","forbidden"]
   Autocorrect: false
   SafeAutoCorrect: false
 
-Style_MultilineIfThen:
+Style/MultilineIfThen:
   Enabled: true
 
-Style_MultilineTernaryOperator:
+Style/MultilineTernaryOperator:
   Enabled: true
 
-Style_NegatedIf:
+Style/NegatedIf:
   Enabled: true
   EnforcedStyle: both
   SupportedStyles: ["both","prefix","postfix"]
 
-Style_NegatedWhile:
+Style/NegatedWhile:
   Enabled: true
 
-Style_NestedTernaryOperator:
+Style/NestedTernaryOperator:
   Enabled: true
 
-Style_NilComparison:
+Style/NilComparison:
   Enabled: true
   EnforcedStyle: predicate
   SupportedStyles: ["predicate","comparison"]
 
-Style_NonNilCheck:
+Style/NonNilCheck:
   Enabled: true
   IncludeSemanticChanges: false
 
-Style_OneLineConditional:
+Style/OneLineConditional:
   Enabled: true
   AlwaysCorrectToMultiline: false
