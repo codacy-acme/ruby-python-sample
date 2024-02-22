@@ -1,0 +1,12 @@
+
+# Example requirements.txt for testing security tools with known CVEs and CWEs
+
+# Known CVEs
+flask==0.12  # CVE-2018-1000656
+django==1.11.15  # CVE-2018-14574
+requests==2.19.1  # CVE-2018-18074
+pillow==6.2.0  # CVE-2019-16865
+
+# Known CWEs
+pyyaml==5.1  # CWE-502: Deserialization of Untrusted Data
+lxml==4.2.5  # CWE-611: Improper Restriction of XML External Entity Reference
